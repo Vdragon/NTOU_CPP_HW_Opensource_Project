@@ -104,6 +104,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Source_code/Sorting_algorithm/Swap_algorithm/Swap_algorithm.h" />
+		<Unit filename="Source_code/calculation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/calculation.h" />
 		<Unit filename="Source_code/io.cpp" />
 		<Unit filename="Source_code/io.h" />
 		<Unit filename="Source_code/main.cpp" />

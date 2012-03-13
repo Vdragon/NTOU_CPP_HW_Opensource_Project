@@ -90,7 +90,7 @@ short readFile(Employee data[], unsigned * size)
 
   /***開啟檔案階段***/
   listDirectoryFiles();
-  cout << "目前的工作目錄所包含的檔案如上，請輸入要讀取的資料檔案名稱：";
+  cout << "目前的工作目錄所包含的檔案如上所示，請輸入要讀取的資料檔案名稱：";
   cin.getline(filename, MAX_FILE_NAME_SIZE);
   inputFile.open(filename, ifstream::in);
   /*預期檔案開啟成功*/

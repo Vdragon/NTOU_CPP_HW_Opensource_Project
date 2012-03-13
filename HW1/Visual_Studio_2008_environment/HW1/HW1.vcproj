@@ -165,7 +165,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Source_code\heapsort.cpp"
+				RelativePath=".\Source_code\calculation.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Source_code\Sorting_algorithm\Heap_sort.c"
 				>
 			</File>
 			<File
@@ -173,7 +177,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Source_code\listDirectoryFiles.c"
+				RelativePath=".\Source_code\List_directory_files\listDirectoryFiles.c"
 				>
 			</File>
 			<File
@@ -181,11 +185,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Source_code\Sorting_algorithm.c"
+				RelativePath=".\Source_code\pauseProgram\Pause_program.c"
 				>
 			</File>
 			<File
-				RelativePath=".\Source_code\Swap_algorithm.c"
+				RelativePath=".\Source_code\Sorting_algorithm\Swap_algorithm\Swap_algorithm.c"
 				>
 			</File>
 		</Filter>
@@ -195,7 +199,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Source_code\heapsort.h"
+				RelativePath=".\Source_code\calculation.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Source_code\Sorting_algorithm\Heap_sort.h"
 				>
 			</File>
 			<File
@@ -203,7 +211,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Source_code\listDirectoryFiles.h"
+				RelativePath=".\Source_code\List_directory_files\listDirectoryFiles.h"
 				>
 			</File>
 			<File
@@ -211,15 +219,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Source_code\pauseProgram\Pause_program.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Source_code\Project_specific_configuration\Show_debug_message.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Source_code\Sorting_algorithm.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Source_code\Swap_algorithm.h"
+				RelativePath=".\Source_code\Sorting_algorithm\Swap_algorithm\Swap_algorithm.h"
 				>
 			</File>
 			<File
