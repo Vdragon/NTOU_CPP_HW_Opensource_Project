@@ -1,86 +1,116 @@
-﻿/*程式框架(Program Framework)
+﻿/*main.cpp
 -----------------------------------
-程式名稱(program name)：。
-程式描述(program description)：。
-程式版本(program version)：0.00(0)
-程式框架版本(program framework version)：A
-程式框架修訂號(program framework revision number)：201109251624
 更新紀錄(changelog)：
   Changelog is now stored on github
 已知問題(known issues)：
   Known issues is now stored on github
 待辦事項(todo)：
   Todo is now stored on github
+著作權宣告：
+  Copyright 2012 林博仁(Henry Lin)
 智慧財產授權條款：
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /*--------------程式碼開始(Code Started)--------------*/
 /*--------------前期處理器指令(Preprocessor Directive)--------------*/
-/*////////程式所include的標頭檔(Included Headers)////////*/
-#include <iostream>
-#include "Sorting_algorithm.h"
-#include "Swap_algorithm.h"
+/*////////環境設定(Environment Settings)////////*/
+/*We need to show debug messages*/
 #include "Project_specific_configuration/Show_debug_message.h"
+
+/*OS specific settings*/
 #include "Project_specific_configuration/System_category.h"
-#include "io.h"
-#include "heapsort.h"
-#include <stdlib.h>
-#include "listDirectoryFiles.h"
+
+/*////////程式所include的標頭檔(Included Headers)////////*/
+/*we need cout cin...*/
+#include <iostream>
+
+/*we need malloc free...
+    TODO: switch to C++ counterparts*/
+#include <cstdlib>
+
+/*some project scope declarations*/
 #include "main.h"
 
+/*functions about input/output */
+#include "io.h"
+
+/*funcitons to pause the program*/
+#include "pauseProgram/Pause_program.h"
+
+/* functions to sort */
+#include "Sorting_algorithm/Heap_sort.h"
+
 /*////////常數與巨集(Constants & Macros)以及其他#define指令////////*/
-#define MAX_DATA_SIZE 200
 
 /*////////其他前期處理器指令(Other Preprocessor Directives////////*/
 
 /*--------------全域宣告與定義(Global Declaration & Definition)--------------*/
-/*////////資料結構(Structures)、typedefs跟enumerations////////*/
+/*////////資料結構(Data Structures)、typedefs跟enumerations////////*/
 
 /*////////函式雛型(Function Prototypes)////////*/
-/*月薪會用到的比較函式
-    如果 person1 的月薪大於 person2 的月薪, 函式傳回 1,
-    如果相等則傳回 0,
-    如果小於則傳回 -1*/
-short compareMonthPay(Employee person1, Employee person2);
-
-/*計算月薪的函式
-    person 員工structure
-    return 員工的月薪*/
-inline unsigned calcMonthPay(Employee person);
 
 /*////////全域變數(Global Variables)////////*/
 
 /*--------------主要程式碼(Main Code)--------------*/
 using namespace std;
-int main(void)
+int main()
   {
-    /*分配記憶體給員工資料*/
-    Employee * temporary = (Employee *)malloc(sizeof(Employee) * MAX_DATA_SIZE);
 
     /*員工實際人數*/
     unsigned employee_total = MAX_DATA_SIZE;
 
-    readFile(temporary, &employee_total);
+    unsigned temp_total;
 
+
+  /*pause program label*/
+  restart_program:
+
+    /*分配記憶體給員工資料*/
+    Employee * temporary = (Employee *)malloc(sizeof(Employee) * MAX_DATA_SIZE);
+
+    /*read file*/
+    if(readFile(temporary, &employee_total) != 0){
+      /*error msg*/
+      cout << "資料檔案讀取失敗！程式異常終止…" << endl;
+
+      /*fail exit*/
+      if(pauseProgram() == 1){
+        goto restart_program;
+      }else{
+        return -1;
+      }
+    }
+
+    /* we will modify it later, so backup */
+    temp_total = employee_total;
+
+    /*sort data*/
+    heapSortEmployee(temporary, &temp_total);
+
+    /*顯示結果*/
+    displayResult(temporary, employee_total);
 
     /*釋放員工資料記憶體*/
     free(temporary);
+
+    /*pause program*/
+    if(pauseProgram() == 1){
+      goto restart_program;
+    }
+
+    /*exit*/
     return 0;
   }
 
-short compareMonthPay(Employee person1, Employee person2)
-{
-  if(calcMonthPay(person1) > calcMonthPay(person2)){
-     return 1;
-  }
-  else if(calcMonthPay(person1) < calcMonthPay(person2)){
-    return -1;
-  }
-  return 0;
-}
-
-inline unsigned calcMonthPay(Employee person)
-{
-  return person.monthly_working_time * person.hourly_salary;
-}

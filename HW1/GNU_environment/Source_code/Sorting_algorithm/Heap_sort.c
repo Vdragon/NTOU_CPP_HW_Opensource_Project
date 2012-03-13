@@ -35,6 +35,9 @@
 /* We need Employee data structure*/
 #include "../main.h"
 
+/* we need salary count function*/
+#include "../calculation.h"
+
 /*////////常數與巨集(Constants & Macros)以及其他#define指令////////*/
 /*節點 i 的父母節點(parent node)*/
 #define INDEX_PARENT(i) i >> 1
@@ -59,10 +62,7 @@
       if 1 < 2 -> -1*/
   short compareMonthPay(Employee person1, Employee person2);
 
-  /*計算月薪的函式
-      person 員工structure
-      return 員工的月薪*/
-  inline unsigned calcMonthPay(Employee person);
+
 /*////////全域變數(Global Variables)////////*/
 
 /*--------------主要程式碼(Main Code)--------------*/
@@ -229,12 +229,6 @@ for(i = *heap_size; i >= 2; --i){
 /*done*/
 return;
 }
-
-inline unsigned calcMonthPay(Employee person)
-{
-  return person.monthly_working_hour  * person.hourly_salary;
-}
-
 
 
 short compareMonthPay(Employee person1, Employee person2)

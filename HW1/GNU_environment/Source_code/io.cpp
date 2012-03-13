@@ -53,6 +53,8 @@
 /* we need listDirectory functions*/
 #include "List_directory_files/listDirectoryFiles.h"
 
+/*we need salary calculation function*/
+#include "calculation.h"
 
 /*////////常數與巨集(Constants & Macros)以及其他#define指令////////*/
 /*max size for storing file name*/
@@ -141,6 +143,7 @@ short readFile(Employee data[], unsigned * size)
     /*2-3 working hour*/
     getline(inputFile, readBuffer);
     data[i].monthly_working_hour = atoi(readBuffer.c_str());
+    assert(data[i].monthly_working_hour >= 0);
 
     /*2-4 hourly salary*/
     getline(inputFile, readBuffer);
@@ -161,4 +164,46 @@ short readFile(Employee data[], unsigned * size)
 
   /*read successfully*/
   return 0;
+}
+
+void displayResult(Employee data[], const unsigned size)
+{
+  /*counter*/
+  unsigned i;
+
+  /*total*/
+  unsigned sum_buffer = 0;
+
+  #ifdef DEBUG
+    cout << "[DEBUG] ";
+    for(i = 0; i < size; i++){
+      cout << calcMonthPay(data[i]) << "  ";
+    }cout << endl;
+  #endif
+
+  /*show result*/
+  cout << "月薪前5名的平均值：";
+  /*加總前5名*/
+  for(i = 0; i < 5; i++){
+    sum_buffer += calcMonthPay(data[size - 1 - i]);
+  }/*取平均值*/
+  cout << sum_buffer / (double)5 << endl;
+
+  /*reset sum*/
+  sum_buffer = 0;
+
+  cout << "月薪後5名的平均值：";
+  /*加總前5名*/
+  for(i = 0; i < 5; i++){
+    sum_buffer += calcMonthPay(data[i]);
+  }/*取平均值*/
+  cout << sum_buffer / (double)5 << endl;
+
+  /*顯示倒數第二薪資的員工資料*/
+  cout << "薪水排名倒數第二名的僱員資料" << endl
+       << "　　姓名：" << data[1].name << endl
+       << "　　ID：" << data[1].id << endl;
+
+  /*done*/
+  return;
 }
