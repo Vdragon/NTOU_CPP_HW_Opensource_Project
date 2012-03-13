@@ -66,26 +66,52 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Source_code/List_directory_files/listDirectoryFiles.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/List_directory_files/listDirectoryFiles.h" />
 		<Unit filename="Source_code/Project_specific_configuration/Show_debug_message.h" />
 		<Unit filename="Source_code/Project_specific_configuration/System_category.h" />
-		<Unit filename="Source_code/Sorting_algorithm.c">
+		<Unit filename="Source_code/Sorting_algorithm/Bubble_sort.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Source_code/Sorting_algorithm.h" />
-		<Unit filename="Source_code/Swap_algorithm.c">
+		<Unit filename="Source_code/Sorting_algorithm/Bubble_sort.h" />
+		<Unit filename="Source_code/Sorting_algorithm/Copy_algorithm/Copy_algorithm.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Source_code/Swap_algorithm.h" />
-		<Unit filename="Source_code/heapsort.cpp" />
-		<Unit filename="Source_code/heapsort.h" />
+		<Unit filename="Source_code/Sorting_algorithm/Copy_algorithm/Copy_algorithm.h" />
+		<Unit filename="Source_code/Sorting_algorithm/Display_content_algorithm/Display_array.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/Sorting_algorithm/Display_content_algorithm/Display_array.h" />
+		<Unit filename="Source_code/Sorting_algorithm/Heap_sort.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/Sorting_algorithm/Heap_sort.h" />
+		<Unit filename="Source_code/Sorting_algorithm/Insertion_sort.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/Sorting_algorithm/Insertion_sort.h" />
+		<Unit filename="Source_code/Sorting_algorithm/Merge_sort.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/Sorting_algorithm/Merge_sort.h" />
+		<Unit filename="Source_code/Sorting_algorithm/Randomize_algorithm/Randomize_algorithm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/Sorting_algorithm/Randomize_algorithm/Randomize_algorithm.h" />
+		<Unit filename="Source_code/Sorting_algorithm/Swap_algorithm/Swap_algorithm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/Sorting_algorithm/Swap_algorithm/Swap_algorithm.h" />
 		<Unit filename="Source_code/io.cpp" />
 		<Unit filename="Source_code/io.h" />
-		<Unit filename="Source_code/listDirectoryFiles.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Source_code/listDirectoryFiles.h" />
 		<Unit filename="Source_code/main.cpp" />
 		<Unit filename="Source_code/main.h" />
+		<Unit filename="Source_code/pauseProgram/Pause_program.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Source_code/pauseProgram/Pause_program.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

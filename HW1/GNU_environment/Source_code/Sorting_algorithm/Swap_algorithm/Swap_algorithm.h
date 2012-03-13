@@ -3,6 +3,9 @@
   #ifdef __cplusplus
   extern "C"{
   #endif
+    /* we need Employee data structure*/
+    #include "../../main.h"
+
     /*swap函式 func. prototype*/
         void swapInt(int * swap_a, int * swap_b);
 
@@ -17,6 +20,9 @@
 
     /*swapDouble func. prototype*/
         void swapDouble(double * a,double * b);
+
+    /**/
+        void swapEmployee(Employee * swap_a, Employee * swap_b);
   #ifdef __cplusplus
   }
   #endif

@@ -1,44 +1,101 @@
-﻿#include <iostream>
+﻿/*io.cpp
+-----------------------------------
+更新紀錄(changelog)：
+  Changelog is now stored on GitHub
+已知問題(known issues)：
+  Known issues is now stored on GitHub
+待辦事項(todo)：
+  Todo is now stored on GitHub
+著作權宣告：
+  Copyright 2012 林博仁(Henry Lin)
+智慧財產授權條款：
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/*--------------程式碼開始(Code Started)--------------*/
+/*--------------前期處理器指令(Preprocessor Directive)--------------*/
+/*////////環境設定(Environment Settings)////////*/
+#include "Project_specific_configuration/Show_debug_message.h"
+
+/*////////程式所include的標頭檔(Included Headers)////////*/
+/*for basic input output*/
+#include <iostream>
+
+/*for file management*/
 #include <fstream>
-#include <assert.h>
-#include <cstdio>
+
+/*for string object*/
 #include <string>
+
+/*we need c string manipulation functions*/
 #include <cstring>
+
+/*we need atoi() to parse number in c string*/
 #include <cstdlib>
 
-#include "Project_specific_configuration/Show_debug_message.h"
-#include "main.h"
-#include "listDirectoryFiles.h"
+/*for assertion support*/
+#include <cassert>
 
+/* for Employee data structure*/
+#include "main.h"
+
+/* we need listDirectory functions*/
+#include "List_directory_files/listDirectoryFiles.h"
+
+
+/*////////常數與巨集(Constants & Macros)以及其他#define指令////////*/
+/*max size for storing file name*/
 #define MAX_FILE_NAME_SIZE 30
 
+/*////////其他前期處理器指令(Other Preprocessor Directives////////*/
+
+/*--------------全域宣告與定義(Global Declaration & Definition)--------------*/
+/*////////資料結構(Data Structures)、typedefs跟enumerations////////*/
+
+/*////////函式雛型(Function Prototypes)////////*/
+
+/*////////全域變數(Global Variables)////////*/
+
+/*--------------主要程式碼(Main Code)--------------*/
 using namespace std;
 short readFile(Employee data[], unsigned * size)
 {
   /*file name buffer*/
   char filename[MAX_FILE_NAME_SIZE];
 
+  /*a file opject to read file*/
   ifstream inputFile;
-
-  /*unsigned dataTotal;*/
 
   /*counter*/
   unsigned i;
 
+  /* unsigned to temporary hold string length */
+  unsigned string_length;
+
+  /*a string object to store string*/
   string readBuffer;
 
   /***開啟檔案階段***/
   listDirectoryFiles();
-
   cout << "目前的工作目錄所包含的檔案如上，請輸入要讀取的資料檔案名稱：";
   cin.getline(filename, MAX_FILE_NAME_SIZE);
-
-  /*FILE * filePtr = fopen(filename, "r");*/
   inputFile.open(filename, ifstream::in);
-
   /*預期檔案開啟成功*/
-  assert(inputFile.is_open());
   if(!inputFile.is_open()){
+    cout << "檔案開啟失敗！請確認您輸入的檔案名稱是否正確，或是您是否有權限存取此檔案。" << endl;
+
+    /*fail, leave*/
     return -1;
   }
 
@@ -59,14 +116,27 @@ short readFile(Employee data[], unsigned * size)
   for(i = 0; i < *size; ++i){
     /*2-1 ID*/
     getline(inputFile, readBuffer);
+    #ifdef DEBUG
+      cout << "[DEBUG] id c_str size=" << strlen(readBuffer.c_str()) << endl;
+    #endif
     strncpy(data[i].id, readBuffer.c_str(), MAX_ID_SIZE - 1);
     /*Avoid readBuffer terminates after max id size, cut it manually*/
     data[i].id[MAX_ID_SIZE - 1] = '\0';
 
     /*2-2 name*/
     getline(inputFile, readBuffer);
+    #ifdef DEBUG
+      cout << "[DEBUG] name c_str size=" << strlen(readBuffer.c_str()) << endl;
+    #endif
     strncpy(data[i].name, readBuffer.c_str(), MAX_NAME_SIZE - 1);
-    data[i].name[MAX_NAME_SIZE - 1] = '\0';
+    /*data[i].name[MAX_NAME_SIZE - 1] = '\0';*/
+    /*去掉Windows平台會殘留的換行字元序列\r*/
+    string_length = strlen(readBuffer.c_str());
+    if(data[i].name[string_length - 1] == '\r'){
+      data[i].name[string_length - 1] = '\0';
+    }else{
+      data[i].name[string_length] = '\0';
+    }
 
     /*2-3 working hour*/
     getline(inputFile, readBuffer);

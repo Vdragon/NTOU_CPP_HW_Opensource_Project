@@ -1,6 +1,6 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include "Project_specific_configuration/System_category.h"
+#include "../Project_specific_configuration/System_category.h"
 
 
 void listDirectoryFiles(void)

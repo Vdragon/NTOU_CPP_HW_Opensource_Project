@@ -1,11 +1,16 @@
 ﻿#ifndef MAIN_H_INCLUDED
   #define MAIN_H_INCLUDED
-  /*僱員基本資料結構*/
+
+  /* max data size to store*/
   #define MAX_DATA_SIZE 200
-  #define MAX_ID_SIZE 11
+
+  /*max ID size, 9 characters + null char*/
+  #define MAX_ID_SIZE 10
+
+  /*max name size, 40 characters + null character*/
   #define MAX_NAME_SIZE 41
 
-
+  /*employee資料結構*/
   typedef struct employee{
     /*ID*/
     char id[MAX_ID_SIZE];
@@ -17,6 +22,4 @@
     unsigned hourly_salary;
   }Employee;
 
-
-
-#endif // MAIN_H_INCLUDED
+#endif /* MAIN_H_INCLUDED*/

@@ -1,4 +1,4 @@
-﻿/*main.cpp
+/*Display_array.c
 -----------------------------------
 更新紀錄(changelog)：
   Changelog is now stored on github
@@ -26,31 +26,10 @@
 /*--------------程式碼開始(Code Started)--------------*/
 /*--------------前期處理器指令(Preprocessor Directive)--------------*/
 /*////////環境設定(Environment Settings)////////*/
-/*We need to show debug messages*/
-#include "Project_specific_configuration/Show_debug_message.h"
-
-/*OS specific settings*/
-#include "Project_specific_configuration/System_category.h"
 
 /*////////程式所include的標頭檔(Included Headers)////////*/
-/*we need cout cin...*/
-#include <iostream>
-
-/*we need malloc free...
-    TODO: switch to C++ counterparts*/
-#include <cstdlib>
-
-/*some project scope declarations*/
-#include "main.h"
-
-/*functions about input/output */
-#include "io.h"
-
-/*funcitons to pause the program*/
-#include "pauseProgram/Pause_program.h"
-
-/* functions to sort */
-#include "Sorting_algorithm/Heap_sort.h"
+/* we need printf()*/
+#include <stdio.h>
 
 /*////////常數與巨集(Constants & Macros)以及其他#define指令////////*/
 
@@ -64,61 +43,34 @@
 /*////////全域變數(Global Variables)////////*/
 
 /*--------------主要程式碼(Main Code)--------------*/
-using namespace std;
-int main(void)
-  {
+void displayArrayInt(const int source[] , /*source_array*/
+                      const unsigned source_size, /*array size*/
+                      const unsigned item_field_width, /*field width of all items*/
+                      const char delimit_character_sequence[], /*character sequence to apart 2 items*/
+                      const unsigned items_per_line) /*how many items to show in one line*/
+{
+  /*counters*/
+  unsigned i;
 
-    /*員工實際人數*/
-    unsigned employee_total = MAX_DATA_SIZE;
+  /*for first item to last item, display them*/
+  for (i = 0; i < source_size; ++i) {
+    /*print item*/
+    printf("%*d", item_field_width, source[i]);
 
-    unsigned temp_total;
-
-    /*counter*/
-    unsigned i;
-
-    /*total*/
-    unsigned sum = 0;
-
-  /*pause program label*/
-  restart_program:
-
-    /*分配記憶體給員工資料*/
-    Employee * temporary = (Employee *)malloc(sizeof(Employee) * MAX_DATA_SIZE);
-
-    /*read file*/
-    if(readFile(temporary, &employee_total) != 0){
-      /*error msg*/
-      cout << "資料檔案讀取失敗！程式異常終止…" << endl;
-
-      /*fail exit*/
-      if(pauseProgram() == 1){
-        goto restart_program;
-      }else{
-        return -1;
-      }
+    /*if not last item or last item of the line, print delimit string*/
+    if(!(i == source_size - 1 || (i + 1) % items_per_line == 0)){
+      printf("%s", delimit_character_sequence);
     }
 
-    /* we will modify it later, so backup */
-    temp_total = employee_total;
-
-    /*sort data*/
-    heapSortEmployee(temporary, &temp_total);
-
-    /*show result
-    for(i = 0; i < 5; i++){
-      sum = sum + temporary[i].
-
-    }*/
-
-    /*釋放員工資料記憶體*/
-    free(temporary);
-
-    /*pause program*/
-    if(pauseProgram() == 1){
-      goto restart_program;
+    /*if the item is the last item of the line, print end of line sequence*/
+    if((i + 1) % items_per_line == 0){
+      putchar('\n');
     }
-
-    /*exit*/
-    return 0;
   }
 
+  /*if the item is the last item of the array, print end of line sequence*/
+  putchar('\n');
+
+  /*done*/
+  return;
+}

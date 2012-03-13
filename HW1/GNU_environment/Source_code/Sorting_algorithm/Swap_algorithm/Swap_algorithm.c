@@ -1,4 +1,4 @@
-﻿/* swap演算法
+/* swap演算法
  * -----------------------------------
  * 程式框架版本(program framework version)：A
  * 程式框架修訂號(program framework revision number)：201109251624
@@ -25,6 +25,8 @@
    * License along with this library; if not, write to the Free Software
    * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
    */
+/* we need Employee data structure*/
+#include "../../main.h"
 
 /*swap函式(整數專用版本)
   版本：1.01(2)
@@ -123,3 +125,21 @@ void swapDouble(double * a,double * b)
 		/*－－－－－－－－－－－－－－－－－－－－－*/
 		return;
 	}
+
+/*swap函式(Employee專用版本)
+  版本：1.01(2)
+  傳入值：指向要swap的兩個整數變數的指標
+  傳回值：無*/
+void swapEmployee(Employee * swap_a, Employee * swap_b)
+        {
+                /*宣告與定義(declaration & definition)*/
+        Employee buffer;/*暫時保存數值的變數*/
+
+                /*－－－－－－－－－－－－－－－－－－－－－*/
+        /*swap*/
+            buffer = *swap_a;/*backup a*/
+            *swap_a = *swap_b;/*assign a with *b*/
+            *swap_b = buffer;/*assign *b with backuped *a*/
+                /*－－－－－－－－－－－－－－－－－－－－－*/
+                return;
+        }
