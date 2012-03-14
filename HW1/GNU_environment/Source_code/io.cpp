@@ -143,6 +143,7 @@ short readFile(Employee data[], unsigned * size)
     /*2-3 working hour*/
     getline(inputFile, readBuffer);
     data[i].monthly_working_hour = atoi(readBuffer.c_str());
+    /*working hour shouldn't be negative*/
     assert(data[i].monthly_working_hour >= 0);
 
     /*2-4 hourly salary*/

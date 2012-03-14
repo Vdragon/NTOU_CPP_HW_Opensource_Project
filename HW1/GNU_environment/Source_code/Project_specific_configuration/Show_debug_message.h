@@ -5,7 +5,6 @@
   #define SHOW_DEBUG_MESSAGE 0
 
   /*是否build跟偵錯有關的程式碼？*/
-  /*#define DEBUG*/
-  #define NDEBUG
+  #define DEBUG
 
 #endif /* SHOW_DEBUG_MESSAGE_H_INCLUDED*/

@@ -71,9 +71,6 @@ int main()
     /*員工實際人數*/
     unsigned employee_total = MAX_DATA_SIZE;
 
-    unsigned temp_total;
-
-
   /*pause program label*/
   restart_program:
 
@@ -93,11 +90,8 @@ int main()
       }
     }
 
-    /* we will modify it later, so backup */
-    temp_total = employee_total;
-
     /*sort data*/
-    heapSortEmployee(temporary, &temp_total);
+    heapSortEmployee(temporary, employee_total);
 
     /*顯示結果*/
     displayResult(temporary, employee_total);

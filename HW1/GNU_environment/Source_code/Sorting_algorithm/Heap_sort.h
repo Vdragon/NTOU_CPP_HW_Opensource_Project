@@ -24,7 +24,7 @@
   /*Heap sort function prototype
       sort data by first maxHeapify it and deletes root consequently*/
   void heapSortEmployee(Employee heap[],
-                           unsigned *heap_size);
+                           unsigned heap_size);
 
   /*maxHeapifyInt函式
       When assuming the left and right children node are max heaps,

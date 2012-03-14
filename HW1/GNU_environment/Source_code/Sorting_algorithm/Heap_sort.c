@@ -60,7 +60,7 @@
       if 1 > 2 -> 1
       if 1 = 2 -> 0
       if 1 < 2 -> -1*/
-  short compareMonthPay(Employee person1, Employee person2);
+  inline short compareMonthPay(Employee person1, Employee person2);
 
 
 /*////////全域變數(Global Variables)////////*/
@@ -206,24 +206,24 @@ void buildMaxHeapEmployee(Employee heap[], /*heap array*/
 }
 
 void heapSortEmployee(Employee heap[],
-            unsigned * heap_size)
+            unsigned heap_size)
 {
 /*counters*/
 unsigned i;
 
 /* build max heap from array */
-buildMaxHeapEmployee(heap, *heap_size);
+buildMaxHeapEmployee(heap, heap_size);
 
 /*for last heap node to second heap node*/
-for(i = *heap_size; i >= 2; --i){
+for(i = heap_size; i >= 2; --i){
   /* swap last node of heap with first (biggest) node*/
   swapEmployee(&heap[i - 1], &heap[0]);
 
   /* heap_size - 1*/
-  --*heap_size;
+  --heap_size;
 
   /* may violate the heap property, max-heapify it again*/
-  maxHeapifyEmployee(heap, *heap_size, 0);
+  maxHeapifyEmployee(heap, heap_size, 0);
 }
 
 /*done*/
@@ -231,7 +231,7 @@ return;
 }
 
 
-short compareMonthPay(Employee person1, Employee person2)
+inline short compareMonthPay(Employee person1, Employee person2)
 {
   if(calcMonthPay(person1) > calcMonthPay(person2)){
      return 1;
