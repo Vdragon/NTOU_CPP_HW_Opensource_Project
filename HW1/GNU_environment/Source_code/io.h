@@ -11,4 +11,6 @@
 
   /*輸出結果的函式*/
   void displayResult(Employee data[], const unsigned size);
+
+
 #endif /* IO_H_INCLUDED*/

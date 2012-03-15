@@ -56,6 +56,9 @@
 /*we need salary calculation function*/
 #include "calculation.h"
 
+/*我們需要能處理EOL的getline()*/
+#include "portableEOLalgorithm/portableEOLalgorithm.h"
+
 /*////////常數與巨集(Constants & Macros)以及其他#define指令////////*/
 /*max size for storing file name*/
 #define MAX_FILE_NAME_SIZE 30
@@ -141,14 +144,20 @@ short readFile(Employee data[], unsigned * size)
     }
 
     /*2-3 working hour*/
-    getline(inputFile, readBuffer);
-    data[i].monthly_working_hour = atoi(readBuffer.c_str());
-    /*working hour shouldn't be negative*/
-    assert(data[i].monthly_working_hour >= 0);
+    inputFile >> data[i].monthly_working_hour;
+    /*FIXME:working hour won't be negative due to data structure definition(unsigned)*/
+    assert(!inputFile.fail());
+    assert(data[i].monthly_working_hour > 0 && data[i].monthly_working_hour < 180);
+    /*skip end of line sequence*/
+    skipEOLsequence(inputFile);
 
     /*2-4 hourly salary*/
-    getline(inputFile, readBuffer);
-    data[i].hourly_salary = atoi(readBuffer.c_str());
+    inputFile >> data[i].hourly_salary;
+    /*FIXME:working hour won't be negative due to data structure definition(unsigned)*/
+    assert(!inputFile.fail());
+    assert(data[i].monthly_working_hour > 0 && data[i].monthly_working_hour < 180);
+    /*skip end of line sequence*/
+    skipEOLsequence(inputFile);
 
     #ifdef DEBUG
       cout << "[DEBUG] data #" << i << endl;
@@ -160,7 +169,6 @@ short readFile(Employee data[], unsigned * size)
   }
 
   /***關閉檔案階段***/
-  /*fclose(filePtr);*/
   inputFile.close();
 
   /*read successfully*/
@@ -208,3 +216,4 @@ void displayResult(Employee data[], const unsigned size)
   /*done*/
   return;
 }
+

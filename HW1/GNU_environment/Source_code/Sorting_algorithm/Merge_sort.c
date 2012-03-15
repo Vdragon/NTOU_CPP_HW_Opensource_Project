@@ -1,4 +1,4 @@
-/*程式框架(Program Framework)
+/*merge_sort.c
 -----------------------------------
 程式名稱(program name)：。
 程式描述(program description)：。
