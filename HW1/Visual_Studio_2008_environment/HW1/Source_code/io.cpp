@@ -56,6 +56,9 @@
 /*we need salary calculation function*/
 #include "calculation.h"
 
+/*我們需要能處理EOL的getline()*/
+#include "portableEOLalgorithm/portableEOLalgorithm.h"
+
 /*////////常數與巨集(Constants & Macros)以及其他#define指令////////*/
 /*max size for storing file name*/
 #define MAX_FILE_NAME_SIZE 30
@@ -90,7 +93,7 @@ short readFile(Employee data[], unsigned * size)
 
   /***開啟檔案階段***/
   listDirectoryFiles();
-  cout << "目前的工作目錄所包含的檔案如上，請輸入要讀取的資料檔案名稱：";
+  cout << "目前的工作目錄所包含的檔案如上所示，請輸入要讀取的資料檔案名稱：";
   cin.getline(filename, MAX_FILE_NAME_SIZE);
   inputFile.open(filename, ifstream::in);
   /*預期檔案開啟成功*/
@@ -107,8 +110,8 @@ short readFile(Employee data[], unsigned * size)
   /*inputFile.ignore(2);*/
   /*We need to eat the END OF LINE character sequence from the stream, so we
     have to find a *more* portable way...*/
-  getline(inputFile, readBuffer);
-  *size = atoi(readBuffer.c_str());
+  inputFile >> *size;
+  skipEOLsequence(inputFile);
 
   #ifdef DEBUG
     cout << "[DEBUG] Total data detected are " << *size << " items" << endl;
@@ -141,13 +144,20 @@ short readFile(Employee data[], unsigned * size)
     }
 
     /*2-3 working hour*/
-    getline(inputFile, readBuffer);
-    data[i].monthly_working_hour = atoi(readBuffer.c_str());
-    assert(data[i].monthly_working_hour >= 0);
+    inputFile >> data[i].monthly_working_hour;
+    /*FIXME:working hour won't be negative due to data structure definition(unsigned)*/
+    assert(!inputFile.fail());
+    assert(data[i].monthly_working_hour > 0 && data[i].monthly_working_hour < 180);
+    /*skip end of line sequence*/
+    skipEOLsequence(inputFile);
 
     /*2-4 hourly salary*/
-    getline(inputFile, readBuffer);
-    data[i].hourly_salary = atoi(readBuffer.c_str());
+    inputFile >> data[i].hourly_salary;
+    /*FIXME:working hour won't be negative due to data structure definition(unsigned)*/
+    assert(!inputFile.fail());
+    assert(data[i].monthly_working_hour > 0 && data[i].monthly_working_hour < 180);
+    /*skip end of line sequence*/
+    skipEOLsequence(inputFile);
 
     #ifdef DEBUG
       cout << "[DEBUG] data #" << i << endl;
@@ -159,7 +169,6 @@ short readFile(Employee data[], unsigned * size)
   }
 
   /***關閉檔案階段***/
-  /*fclose(filePtr);*/
   inputFile.close();
 
   /*read successfully*/
@@ -207,3 +216,4 @@ void displayResult(Employee data[], const unsigned size)
   /*done*/
   return;
 }
+

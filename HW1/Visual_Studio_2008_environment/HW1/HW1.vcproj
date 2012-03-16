@@ -92,7 +92,7 @@
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
-			ManagedExtensions="1"
+			ManagedExtensions="0"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -165,11 +165,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\Source_code\Sorting_algorithm\Bubble_sort.c"
+				>
+			</File>
+			<File
 				RelativePath=".\Source_code\calculation.c"
 				>
 			</File>
 			<File
-				RelativePath=".\Source_code\Sorting_algorithm\Heap_sort.c"
+				RelativePath=".\Source_code\Sorting_algorithm\Heap_sort.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Source_code\Sorting_algorithm\Insertion_sort.c"
 				>
 			</File>
 			<File
@@ -185,7 +193,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Source_code\Sorting_algorithm\Merge_sort.c"
+				>
+			</File>
+			<File
 				RelativePath=".\Source_code\pauseProgram\Pause_program.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Source_code\portableEOLalgorithm\portableEOLalgorithm.cpp"
 				>
 			</File>
 			<File
@@ -199,11 +215,19 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\Source_code\Sorting_algorithm\Bubble_sort.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Source_code\calculation.h"
 				>
 			</File>
 			<File
 				RelativePath=".\Source_code\Sorting_algorithm\Heap_sort.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Source_code\Sorting_algorithm\Insertion_sort.h"
 				>
 			</File>
 			<File
@@ -219,7 +243,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Source_code\Sorting_algorithm\Merge_sort.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Source_code\pauseProgram\Pause_program.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Source_code\portableEOLalgorithm\portableEOLalgorithm.h"
 				>
 			</File>
 			<File

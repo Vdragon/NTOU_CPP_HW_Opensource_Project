@@ -1,4 +1,4 @@
-/*Display_array.c
+﻿/*Display_array.c
 -----------------------------------
 更新紀錄(changelog)：
   Changelog is now stored on github

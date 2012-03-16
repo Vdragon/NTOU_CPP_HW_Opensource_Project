@@ -1,4 +1,4 @@
-#ifndef RANDOMIZE_ALGORITHM_H_INCLUDED
+﻿#ifndef RANDOMIZE_ALGORITHM_H_INCLUDED
   #define RANDOMIZE_ALGORITHM_H_INCLUDED
   /*randomize an array*/
   void randomizeArray(int array_source[], /*the source array*/

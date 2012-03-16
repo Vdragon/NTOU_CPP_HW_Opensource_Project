@@ -1,4 +1,4 @@
-/*Randomize_algorithm.c
+﻿/*Randomize_algorithm.c
 -----------------------------------
 更新紀錄(changelog)：
   Changelog is now stored on github

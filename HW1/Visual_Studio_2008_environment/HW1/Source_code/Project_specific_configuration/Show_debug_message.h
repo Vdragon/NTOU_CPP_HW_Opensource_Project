@@ -6,6 +6,5 @@
 
   /*是否build跟偵錯有關的程式碼？*/
   /*#define DEBUG*/
-  #define NDEBUG
 
 #endif /* SHOW_DEBUG_MESSAGE_H_INCLUDED*/

@@ -1,4 +1,4 @@
-/*calculation.cpp
+﻿/*calculation.cpp
 -----------------------------------
 更新紀錄(changelog)：
   Changelog is now stored on github

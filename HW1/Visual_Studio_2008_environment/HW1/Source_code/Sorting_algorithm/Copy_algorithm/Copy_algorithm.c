@@ -1,4 +1,4 @@
-/*程式框架(Program Framework)
+﻿/*程式框架(Program Framework)
 -----------------------------------
 更新紀錄(changelog)：
   Changelog is now stored on github

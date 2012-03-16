@@ -1,0 +1,11 @@
+﻿Source_code/
+軟體的原始程式碼
+
+HW1.sln
+Visual Studio方案檔案
+
+HW1.vcproj
+Visual C++ 專案檔案
+
+data[1-3].dat
+軟體使用的資料檔案

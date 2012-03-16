@@ -110,8 +110,8 @@ short readFile(Employee data[], unsigned * size)
   /*inputFile.ignore(2);*/
   /*We need to eat the END OF LINE character sequence from the stream, so we
     have to find a *more* portable way...*/
-  getline(inputFile, readBuffer);
-  *size = atoi(readBuffer.c_str());
+  inputFile >> *size;
+  skipEOLsequence(inputFile);
 
   #ifdef DEBUG
     cout << "[DEBUG] Total data detected are " << *size << " items" << endl;

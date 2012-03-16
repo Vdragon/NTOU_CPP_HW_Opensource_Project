@@ -1,4 +1,4 @@
-#ifndef LISTDIRECTORYFILES_H_INCLUDED
+﻿#ifndef LISTDIRECTORYFILES_H_INCLUDED
   #define LISTDIRECTORYFILES_H_INCLUDED
   #ifdef __cplusplus
   extern "C"{

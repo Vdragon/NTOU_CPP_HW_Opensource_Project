@@ -1,4 +1,4 @@
-/* swap演算法
+﻿/* swap演算法
  * -----------------------------------
  * 程式框架版本(program framework version)：A
  * 程式框架修訂號(program framework revision number)：201109251624
